@@ -36,34 +36,32 @@ public class Main {
     public static class Frec{
         static Map<String, Integer> map = new HashMap<>();
 
-        public static void mapping(String s){
+        public static void mapping(String s) {
+            if (!s.isEmpty()) {
 
-            s = s.toLowerCase();
 
-            s = s.replaceAll("[^а-яa-z0-9]", " ");
-            s = s.replaceAll(" +", " ");
+                s = s.toLowerCase();
 
-            if(s != "") {
+                s = s.replaceAll("[^а-яa-z0-9]", " ");
+                s = s.replaceAll(" +", " ");
 
-                if (s.charAt(s.length() - 1) == ' ') {
+                if (!s.isEmpty() && s.charAt(s.length() - 1) == ' ') {
                     s = s.substring(0, s.length() - 1);
                 }
 
-                if(s != "") {
-                    if (s.charAt(0) == ' ') {
-                        s = s.substring(1, s.length());
-                    }
+                if (!s.isEmpty() && s.charAt(0) == ' ') {
+                    s = s.substring(1, s.length());
+                }
 
-                    String[] strArray = s.split(" ");
+                String[] strArray = s.split(" ");
 
-                    for (int i = 0; i < strArray.length; i++) {
-                        if (map.containsKey(strArray[i]))
-                            map.put(strArray[i], map.get(strArray[i]) + 1);
-                        else
-                            map.put(strArray[i], 1);
-                    }
+                for (int i = 0; i < strArray.length; i++) {
+                    if (map.containsKey(strArray[i]))
+                        map.put(strArray[i], map.get(strArray[i]) + 1);
+                    else
+                        map.put(strArray[i], 1);
                 }
             }
         }
-    }
+        }
 }
